@@ -333,7 +333,7 @@ public class ManagedOverlay extends ItemizedOverlay<ManagedOverlayItem> {
 
 
 
-    private final static class NullMarker extends ManagedOverlayItem {
+    public final static class NullMarker extends ManagedOverlayItem {
 		private static Drawable marker;
 		public static final NullMarker INSTANCE = new NullMarker();
 
