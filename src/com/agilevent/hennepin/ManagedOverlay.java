@@ -1,20 +1,20 @@
-package de.android1.overlaymanager;
+package com.agilevent.hennepin;
 
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.*;
-import android.view.MotionEvent;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
-import android.widget.ImageView;
-
+import android.view.MotionEvent;
+import android.view.View;
+import com.agilevent.hennepin.lazyload.*;
+import com.google.android.maps.GeoPoint;
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.MapView;
-import com.google.android.maps.GeoPoint;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import de.android1.overlaymanager.lazyload.*;
 
 public class ManagedOverlay extends ItemizedOverlay<ManagedOverlayItem> {
 
@@ -40,7 +40,7 @@ public class ManagedOverlay extends ItemizedOverlay<ManagedOverlayItem> {
 	private int minTouchableWidth = 10;
 	private int minTouchableHeight = 10;
 
-	protected ManagedOverlay(OverlayManager manager, String name, Drawable defaultMarker) {
+    protected ManagedOverlay(OverlayManager manager, String name, Drawable defaultMarker) {
 		super(defaultMarker);
 		if (defaultMarker.getBounds().isEmpty())
 			boundCenterBottom(defaultMarker);
@@ -52,15 +52,15 @@ public class ManagedOverlay extends ItemizedOverlay<ManagedOverlayItem> {
 	}
 
     public static void boundToCenter (Drawable d){
-        boundCenter(d);
+        boundCenter( d );
     }
 
     public static void boundToCenterBottom (Drawable d){
-        boundCenterBottom(d);
+        boundCenterBottom( d );
     }
 
 	protected ManagedOverlay(OverlayManager manager, Drawable defaultMarker) {
-		this(manager, null, defaultMarker);
+		this( manager, null, defaultMarker );
 	}
 
 	protected ManagedOverlay(Drawable defaultMarker) {
@@ -70,7 +70,7 @@ public class ManagedOverlay extends ItemizedOverlay<ManagedOverlayItem> {
 	private void initGestureDetect() {
 		ManagedOverlayGestureDetector.ManagedGestureListener managedGestureListener = new ManagedOverlayGestureDetector.ManagedGestureListener(this);
 		this.gs = new ManagedOverlayGestureDetector(manager.ctx, managedGestureListener, this);
-		managedGestureListener.setDetector(gs);
+		managedGestureListener.setDetector( gs );
 	}
 
 	public synchronized void invokeLazyLoad(long delay) {
@@ -90,11 +90,11 @@ public class ManagedOverlay extends ItemizedOverlay<ManagedOverlayItem> {
 			zoomFinished = false;
 			this.gs.invokeZoomFinished();
 		}
-		super.draw(canvas, mapView, false);
+		super.draw(canvas, mapView, shadow);
 		if (lastZoomlevel == -1)
 			lastZoomlevel = mapView.getZoomLevel();
 		if (mapView.getZoomLevel() != lastZoomlevel) {
-			this.gs.invokeZoomEvent(lastZoomlevel, mapView.getZoomLevel());
+			this.gs.invokeZoomEvent( lastZoomlevel, mapView.getZoomLevel() );
 			lastZoomlevel = mapView.getZoomLevel();
 		}
 	}
@@ -143,7 +143,7 @@ public class ManagedOverlay extends ItemizedOverlay<ManagedOverlayItem> {
 	}
 
 	public ManagedOverlayItem createItem(GeoPoint p, String titel, String snippet) {
-		ManagedOverlayItem item = new ManagedOverlayItem.Builder(p).name(titel).snippet(snippet).create();
+		ManagedOverlayItem item = new ManagedOverlayItem.Builder(p).name(titel).snippet( snippet ).create();
 		add(item);
 		return item;
 	}
@@ -189,12 +189,12 @@ public class ManagedOverlay extends ItemizedOverlay<ManagedOverlayItem> {
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event, MapView mapView) {
-		return this.gs.onTouchEvent(event);
+		return this.gs.onTouchEvent( event );
 	}
 
 	@Override
 	public boolean onTrackballEvent(MotionEvent event, MapView mapView) {
-		return super.onTrackballEvent(event, mapView);
+		return super.onTrackballEvent( event, mapView );
 	}
 /*
 	@Override
@@ -228,7 +228,7 @@ public class ManagedOverlay extends ItemizedOverlay<ManagedOverlayItem> {
 		return isLazyLoadEnabled;
 	}
 
-	public LazyLoadAnimation enableLazyLoadAnimation(ImageView target) {
+	public LazyLoadAnimation enableLazyLoadAnimation(View target) {
 		return getLazyLoadManager().enableLazyLoadAnimation(target);
 	}
 
@@ -265,7 +265,7 @@ public class ManagedOverlay extends ItemizedOverlay<ManagedOverlayItem> {
 	}
 
 	public void setOnGestureListener(ManagedOverlayGestureDetector.OnGestureListener listener) {
-		this.gs.setOnGestureListener(listener);
+		this.gs.setOnGestureListener( listener );
 	}
 
 	public OverlayManager getManager() {
@@ -331,7 +331,9 @@ public class ManagedOverlay extends ItemizedOverlay<ManagedOverlayItem> {
 		super.setOnFocusChangeListener(listener);
 	}
 
-	private final static class NullMarker extends ManagedOverlayItem {
+
+
+    private final static class NullMarker extends ManagedOverlayItem {
 		private static Drawable marker;
 		public static final NullMarker INSTANCE = new NullMarker();
 

@@ -1,13 +1,13 @@
-package de.android1.overlaymanager.lazyload;
+package com.agilevent.hennepin.lazyload;
 
-import de.android1.overlaymanager.ManagedOverlay;
-import de.android1.overlaymanager.ManagedOverlayItem;
-import android.util.Log;
 import android.os.Handler;
 import android.os.Message;
-import android.widget.ImageView;
-import com.google.android.maps.Projection;
+import android.util.Log;
+import android.view.View;
+import com.agilevent.hennepin.ManagedOverlay;
+import com.agilevent.hennepin.ManagedOverlayItem;
 import com.google.android.maps.GeoPoint;
+import com.google.android.maps.Projection;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -37,8 +37,8 @@ public class LazyLoadManager {
         invoke();
     }
 
-    public LazyLoadAnimation enableLazyLoadAnimation(ImageView imageView) {
-        lazyLoadAnimation = new LazyLoadAnimation(imageView);
+    public LazyLoadAnimation enableLazyLoadAnimation(View progressView) {
+        lazyLoadAnimation = new LazyLoadAnimation(progressView);
         return lazyLoadAnimation;
     }
 

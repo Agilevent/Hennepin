@@ -1,6 +1,7 @@
-package de.android1.overlaymanager.lazyload;
+package com.agilevent.hennepin.lazyload;
 
-import de.android1.overlaymanager.ManagedOverlay;
+
+import com.agilevent.hennepin.ManagedOverlay;
 
 public interface LazyLoadListener {
 

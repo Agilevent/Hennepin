@@ -1,6 +1,7 @@
-package de.android1.overlaymanager.lazyload;
+package com.agilevent.hennepin.lazyload;
 
-import de.android1.overlaymanager.ManagedOverlayException;
+
+import com.agilevent.hennepin.ManagedOverlayException;
 
 public class LazyLoadException extends ManagedOverlayException {
 

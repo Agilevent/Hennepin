@@ -1,4 +1,4 @@
-package de.android1.overlaymanager;
+package com.agilevent.hennepin;
 
 public class ZoomEvent {
     public static final int ZOOM_IN = 1;

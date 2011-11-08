@@ -1,4 +1,4 @@
-package de.android1.overlaymanager;
+package com.agilevent.hennepin;
 
 public class ManagedOverlayException extends Exception{
 

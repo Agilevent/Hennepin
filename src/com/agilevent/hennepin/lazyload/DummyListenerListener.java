@@ -17,14 +17,15 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package de.android1.overlaymanager.lazyload;
+package com.agilevent.hennepin.lazyload;
 
-import de.android1.overlaymanager.ManagedOverlayGestureDetector;
-import de.android1.overlaymanager.ZoomEvent;
-import de.android1.overlaymanager.ManagedOverlay;
-import de.android1.overlaymanager.ManagedOverlayItem;
 import android.view.MotionEvent;
+import com.agilevent.hennepin.ManagedOverlay;
+import com.agilevent.hennepin.ManagedOverlayGestureDetector;
+import com.agilevent.hennepin.ManagedOverlayItem;
+import com.agilevent.hennepin.ZoomEvent;
 import com.google.android.maps.GeoPoint;
+
 
 public class DummyListenerListener implements ManagedOverlayGestureDetector.OnOverlayGestureListener{
     @Override

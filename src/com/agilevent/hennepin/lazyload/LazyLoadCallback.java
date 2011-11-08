@@ -1,11 +1,10 @@
-package de.android1.overlaymanager.lazyload;
+package com.agilevent.hennepin.lazyload;
 
+import com.agilevent.hennepin.ManagedOverlay;
+import com.agilevent.hennepin.ManagedOverlayItem;
 import com.google.android.maps.GeoPoint;
 
 import java.util.List;
-
-import de.android1.overlaymanager.ManagedOverlay;
-import de.android1.overlaymanager.ManagedOverlayItem;
 
 
 public interface LazyLoadCallback {
