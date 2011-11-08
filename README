@@ -1,0 +1,8 @@
+This is a port of the Mapview Overlay Manager. The original code can be found here: http://code.google.com/p/mapview-overlay-manager
+
+All original code and wiki entries are credited to the contributors and committers of that library. 
+
+LICENSE
+Since this is a fork, all code will follow the original intent of the original Authors. 
+
+This code is LGPL licensed: http://www.gnu.org/licenses/lgpl.html
